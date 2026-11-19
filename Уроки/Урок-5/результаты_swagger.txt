@@ -1,0 +1,356 @@
+Ogurtsov API
+ 0.1.0 
+OAS 3.1
+/openapi.json
+default
+
+
+GET
+/users
+Get Users
+
+
+
+GET
+/users/{user_id}
+Get User
+
+
+
+POST
+/user/create_user
+Создаёт пользователя
+
+
+
+PUT
+/user/update_user/{user_id}
+Полное обновление пользователя
+
+
+Эндпоинт, который полностью заменяет данные пользователя
+
+Parameters
+Cancel
+Reset
+Name	Description
+user_id *
+integer
+(path)
+1
+Request body
+
+application/json
+Edit Value
+Schema
+{
+  "first_name": "Александр",
+  "last_name": "Огурцов",
+  "login": "1234",
+  "email": "G3412316@gmail.com",
+  "password": "1234"
+}
+Execute
+Clear
+Responses
+Curl
+
+curl -X 'PUT' \
+  'http://127.0.0.1:8000/user/update_user/1' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "first_name": "Александр",
+  "last_name": "Огурцов",
+  "login": "1234",
+  "email": "G3412316@gmail.com",
+  "password": "1234"
+}'
+Request URL
+http://127.0.0.1:8000/user/update_user/1
+Server response
+Code	Details
+200	
+Response body
+Download
+{
+  "first_name": "Александр",
+  "last_name": "Огурцов",
+  "login": "1234",
+  "email": "G3412316@gmail.com",
+  "password": "1234"
+}
+Response headers
+ content-length: 126 
+ content-type: application/json 
+ date: Thu,19 Nov 2026 17:40:19 GMT 
+ server: uvicorn 
+Responses
+Code	Description	Links
+200	
+Successful Response
+
+Media type
+
+application/json
+Controls Accept header.
+Example Value
+Schema
+{
+  "first_name": "string",
+  "last_name": "string",
+  "login": "string",
+  "email": "string",
+  "password": "string"
+}
+No links
+422	
+Validation Error
+
+Media type
+
+application/json
+Example Value
+Schema
+{
+  "detail": [
+    {
+      "loc": [
+        "string",
+        0
+      ],
+      "msg": "string",
+      "type": "string",
+      "input": "string",
+      "ctx": {}
+    }
+  ]
+}
+No links
+
+PATCH
+/user/update_user/{user_id}
+Частичное обновление пользователя
+
+
+Эндпоинт, который частично обновляет данные пользователя
+
+Parameters
+Cancel
+Reset
+Name	Description
+user_id *
+integer
+(path)
+1
+Request body
+
+application/json
+Edit Value
+Schema
+{
+  "first_name": "Александр"
+}
+Execute
+Clear
+Responses
+Curl
+
+curl -X 'PATCH' \
+  'http://127.0.0.1:8000/user/update_user/1' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "first_name": "Александр"
+}'
+Request URL
+http://127.0.0.1:8000/user/update_user/1
+Server response
+Code	Details
+200	
+Response body
+Download
+{
+  "first_name": "Александр",
+  "last_name": null,
+  "login": null,
+  "email": null,
+  "password": null
+}
+Response headers
+ content-length: 94 
+ content-type: application/json 
+ date: Thu,19 Nov 2026 17:41:08 GMT 
+ server: uvicorn 
+Responses
+Code	Description	Links
+200	
+Successful Response
+
+Media type
+
+application/json
+Controls Accept header.
+Example Value
+Schema
+{
+  "first_name": "string",
+  "last_name": "string",
+  "login": "string",
+  "email": "string",
+  "password": "string"
+}
+No links
+422	
+Validation Error
+
+Media type
+
+application/json
+Example Value
+Schema
+{
+  "detail": [
+    {
+      "loc": [
+        "string",
+        0
+      ],
+      "msg": "string",
+      "type": "string",
+      "input": "string",
+      "ctx": {}
+    }
+  ]
+}
+No links
+
+DELETE
+/user/delete_user/{user_id}
+Удаление пользователя
+
+
+Эндпоинт, который удаляет пользователя по ID
+
+Parameters
+Cancel
+Name	Description
+user_id *
+integer
+(path)
+1
+soft_delete
+boolean
+(query)
+
+false
+Execute
+Clear
+Responses
+Curl
+
+curl -X 'DELETE' \
+  'http://127.0.0.1:8000/user/delete_user/1?soft_delete=false' \
+  -H 'accept: */*'
+Request URL
+http://127.0.0.1:8000/user/delete_user/1?soft_delete=false
+Server response
+Code	Details
+200	
+Response body
+Download
+{
+  "user_id": 1
+}
+Response headers
+ content-length: 13 
+ content-type: application/json 
+ date: Thu,19 Nov 2026 17:41:37 GMT 
+ server: uvicorn 
+Responses
+Code	Description	Links
+200	
+Successful Response
+
+Media type
+
+application/json
+Controls Accept header.
+Example Value
+Schema
+"string"
+No links
+422	
+Validation Error
+
+Media type
+
+application/json
+Example Value
+Schema
+{
+  "detail": [
+    {
+      "loc": [
+        "string",
+        0
+      ],
+      "msg": "string",
+      "type": "string",
+      "input": "string",
+      "ctx": {}
+    }
+  ]
+}
+No links
+
+Schemas
+HTTPValidationErrorCollapse allobject
+detailCollapse allarray<object>
+ItemsCollapse allobject
+locCollapse allarray<(string | integer)>
+ItemsCollapse all(string | integer)
+Any ofCollapse all(string | integer)
+#0string
+#1integer
+msgstring
+typestring
+inputany
+ctxobject
+UserCollapse allobject
+first_namestring
+last_namestring
+loginstring
+emailstring
+passwordstring
+UserUpdateCollapse allobject
+first_nameCollapse all(string | null)
+Any ofCollapse all(string | null)
+#0string
+#1null
+last_nameCollapse all(string | null)
+Any ofCollapse all(string | null)
+#0string
+#1null
+loginCollapse all(string | null)
+Any ofCollapse all(string | null)
+#0string
+#1null
+emailCollapse all(string | null)
+Any ofCollapse all(string | null)
+#0string
+#1null
+passwordCollapse all(string | null)
+Any ofCollapse all(string | null)
+#0string
+#1null
+ValidationErrorCollapse allobject
+locCollapse allarray<(string | integer)>
+ItemsCollapse all(string | integer)
+Any ofCollapse all(string | integer)
+#0string
+#1integer
+msgstring
+typestring
+inputany
+ctxobject
